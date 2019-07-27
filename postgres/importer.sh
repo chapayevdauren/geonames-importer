@@ -77,7 +77,7 @@ seed() {
 
     printf >&2 "Importing geonames into database '$DB_NAME'...\n"
     db_sql "COPY $DB_SCHEMA.names              FROM '$DIR/allCountries.txt'        ( FORMAT CSV, DELIMITER E'\t', QUOTE E'\b')"
-    db_sql "COPY $DB_SCHEMA.alternate_names    FROM '$DIR/alternateNames.txt'      ( FORMAT CSV, DELIMITER E'\t' )"
+    db_sql "COPY $DB_SCHEMA.alternate_names    FROM '$DIR/alternateNames.txt'      ( FORMAT CSV, DELIMITER E'\t', QUOTE E'\b')"
     db_sql "COPY $DB_SCHEMA.iso_language_codes FROM '$DIR/iso-languagecodes.txt'   ( FORMAT CSV, DELIMITER E'\t', HEADER ON )"
     db_sql "COPY $DB_SCHEMA.admin1_ascii_codes FROM '$DIR/admin1CodesASCII.txt'    ( FORMAT CSV, DELIMITER E'\t' )"
     db_sql "COPY $DB_SCHEMA.admin2_codes       FROM '$DIR/admin2Codes.txt'         ( FORMAT CSV, DELIMITER E'\t' )"
