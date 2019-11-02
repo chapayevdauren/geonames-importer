@@ -1,4 +1,4 @@
-SET search_path TO geonames;
+SET search_path TO public;
 
 -- all countries combined in one file, see 'geoname' table for columns
 DROP TABLE IF EXISTS names;
@@ -7,8 +7,8 @@ CREATE TABLE names (
   name TEXT,                        -- name of geographical point (utf8) varchar(200)
   ascii_name TEXT,                  -- name of geographical point in plain ascii characters, varchar(200)
   alternate_names TEXT,             -- alternate names, comma separated varchar(5000)
-  latitude DECIMAL(10,7),           -- latitude in decimal degrees (wgs84)
-  longitude DECIMAL(10,7),          -- longitude in decimal degrees (wgs84)
+  latitude DOUBLE PRECISION,        -- latitude in decimal degrees (wgs84)
+  longitude DOUBLE PRECISION,       -- longitude in decimal degrees (wgs84)
   feature_class CHAR(1),            -- see http://www.geonames.org/export/codes.html, char(1)
   feature_code VARCHAR(10),         -- see http://www.geonames.org/export/codes.html, varchar(10)
   country_code CHAR(2),             -- ISO-3166 2-letter country code, 2 characters

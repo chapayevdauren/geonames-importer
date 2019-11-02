@@ -6,7 +6,7 @@ DB_HOST="localhost"
 DB_NAME="geonames"
 DB_PORT=5432
 
-DB_SCHEMA="geonames"
+DB_SCHEMA="public"
 
 BASE_URL="http://download.geonames.org/export/dump"
 
