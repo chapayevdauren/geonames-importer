@@ -1,0 +1,14 @@
+UPDATE geoname_trans
+SET asciiname = geoname_trans_tmp.asciiname,
+    latitude  = geoname_trans_tmp.latitude,
+    longitude = geoname_trans_tmp.longitude,
+    timezone = geoname_trans_tmp.timezone,
+    moddate = geoname_trans_tmp.moddate,
+    the_geom = geoname_trans_tmp.the_geom
+FROM geoname_trans_tmp
+WHERE geoname_trans.geonameid = geoname_trans_tmp.geonameid
+  and geoname_trans.moddate < geoname_trans_tmp.moddate;
+
+
+CREATE TABLE geoname_trans_tmp AS TABLE geoname_trans;
+CREATE TABLE geoname_trans_tmp_without_data AS TABLE geoname_trans with no data;

@@ -144,7 +144,10 @@ CREATE INDEX idx_geoname_trans_geom ON geoname_trans USING gist (the_geom);
 
 ------------------------------------------------------------------------------------------------------------------------
 select count(geonameid)
-from geoname_trans; -- 4_730_747
+from geoname_trans; -- 4_672_808
+
+select count(geonameid)
+from geoname_trans_tmp; -- 4_672_808
 
 select count(name_id)
 from names
@@ -154,5 +157,8 @@ select count(name_id)
 from short_best_trans;
 -- 3_426_999
 
--- pg_dump --format custom --host localhost --port 5432 --username sajda -t geoname_trans geonames -f geoname_trans.dump -v
--- pg_restore --host localhost --port 5432 --username sajda -t geoname_trans -d sajda geoname_trans.dump
+-- pg_dump --format custom --host localhost --port 5432 --username sajda -t geoname_trans_tmp geonames -f geonames_trans.dump -v
+-- pg_restore --host localhost --port 5432 --username sajda -t geoname_trans_tmp -d sajda geonames_trans.dump
+
+drop table geoname_trans;
+alter table geoname_trans_tmp rename to geoname_trans;
